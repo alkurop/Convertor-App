@@ -8,7 +8,12 @@
   pointer-events: none;
 }
 
+@font-face {
+  font-family: 'NeoFont'; /*a name to be used later*/
+  src: url('/fonts/benggcbi.ttf'); /*URL to font*/
+}
 .App-header {
+  font-family: 'NeoFont';
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -21,6 +26,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+code {
+  font-family: 'NeoFont';
 }
 
 @keyframes App-logo-spin {
