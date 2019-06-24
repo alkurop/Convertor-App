@@ -12,7 +12,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "brunch build -p"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,5 +28,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "uglify-js-brunch": "^2.10.0"
   }
 }
