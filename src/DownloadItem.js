@@ -1,5 +1,4 @@
 
-
 export class DownloadState {
     static get LOADING () {
         return "loading";
@@ -22,5 +21,13 @@ export class DownloadState {
 export class Actions {
     static get ADD_ITEM () {
         return "ADD_ITEM";
+    }
+
+    static get UPDATE_ITEM () {
+        return "UPDATE_ITEM";
+    }
+
+    static get REMOVE_ITEM () {
+        return "REMOVE_ITEM";
     }
 }
