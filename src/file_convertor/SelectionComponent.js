@@ -1,5 +1,5 @@
 import React from "react";
-`
+
 const SelectionComponent = ({ item }) => {
   var file;
   const onFormSubmit = event => {
