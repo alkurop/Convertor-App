@@ -1,32 +1,24 @@
-import React from 'react';
+import React from "react";
+`
+const SelectionComponent = ({ item }) => {
+  var file;
+  const onFormSubmit = event => {
+    event.preventDefault();
+    console.log("open file browser", file);
+  };
+  const onChange = event => {
+    file = event.target.files[0];
+  };
 
-// constructor(props) {
-//   super(props);
-//   this.onChange = this.onChange.bind(this)
-//   this.onFormSubmit = this.onFormSubmit.bind(this)
-//   this.state = {};
-// }
-// onFormSubmit(event) {
-//   event.preventDefault(); // Stop form submit
-//   console.log("open file browser", this.state.file);
-// }
-// onChange(event) {
-//     this.setState({file: event.target.files[0]})
-// }
-// render() {
-//   return (
-//     <form onSubmit={this.onFormSubmit}>
-//       <h1>File Upload</h1>
-//       <input type="file" accept = "audio/flac" onChange={this.onChange} />
-//       <button type="submit">Upload</button>
-//     </form>
-//   );
-// }
-
-const SelectionComponent = (props) => {
-    return(<div>
-        Selection
-    </div>);
-}
+  return (
+    <div>
+      <form onSubmit={onFormSubmit}>
+        <h1>File Upload</h1>
+        <input type="file" accept="audio/flac" onChange={onChange} />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+  );
+};
 
 export default SelectionComponent;

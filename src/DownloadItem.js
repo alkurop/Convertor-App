@@ -11,10 +11,6 @@ export class DownloadState {
     static get SELECTION () {
         return "selection";
     }
-
-    static get HIDDEN () {
-        return "HIDDEN";
-    }
 };
 
 

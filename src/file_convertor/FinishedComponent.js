@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-const FinishedComponent = ({fileName}) => {
+const FinishedComponent = ({item}) => {
     return (
         <div>
-            Finished loading {fileName}
+            Finished loading {item.filename}
         </div>
     )
 }
