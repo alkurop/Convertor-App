@@ -2,35 +2,36 @@ import React from "react";
 import FinishedComponent from "./FinishedComponent";
 import LoadingComponent from "./LoadingComponent";
 import SelectionComponent from "./SelectionComponent";
-import {DownloadState} from "../DownloadItem"
+import ErrorComponent from "./ErrorComponent";
+import { DownloadState } from "../DownloadItem";
 import { connect } from "react-redux";
-
 import "./Convertor.css";
 
 const FlacToWavConvertorComponent = props => {
-  console.log("state", props.state)
+  console.log("state", props.state);
 
   return (
     <div className="Convertor">
-       {props.state.map((item, index) => {
-         if(item.status === DownloadState.LOADING){
-           return  <LoadingComponent key={index}/> 
-         }
-         else if(item.status === DownloadState.FINISHED){
-            return <FinishedComponent key={index} /> 
-         }
-         else if(item.status === DownloadState.SELECTION){
-            return <SelectionComponent key={index} /> 
-         }
-         else return <div>privet</div>
+      {props.state.map((item, index) => {
+        if (item.status === DownloadState.LOADING) {
+          return <LoadingComponent key={index} item={item} />;
+        } else if (item.status === DownloadState.FINISHED) {
+          return <FinishedComponent key={index} item={item} />;
+        } else if (item.status === DownloadState.SELECTION) {
+          return <SelectionComponent key={index} item={item} />;
+        } else if (item.status === DownloadState.ERROR) {
+          return (
+            <div key={index}>
+              <ErrorComponent item={item}/>
+              <SelectionComponent key={index} item={item} />
+            </div>
+          );
+        } else return <div>privet</div>;
       })}
     </div>
   );
 };
 
-export default connect(
-  state => ({
-    state: state
-  }),
-  dispatch => ({})
-)(FlacToWavConvertorComponent);
+export default connect(state => ({
+  state: state
+}))(FlacToWavConvertorComponent);
