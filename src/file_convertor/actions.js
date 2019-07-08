@@ -1,30 +1,21 @@
 import { Actions, DownloadState } from "./DownloadItem";
 import { uploadFlacFileForConversion } from "./ApiActions";
-export const sendFileAsync = item => {
+export const sendFileAsync = (item, file) => {
   item.status = DownloadState.LOADING;
   return dispatch => {
     dispatch({ type: Actions.UPDATE_ITEM, payload: item });
 
-    uploadFlacFileForConversion(item.file)
+    uploadFlacFileForConversion(file)
       .then(result => {
-        console.log("Conversion success", result)
+        console.log("result", result);
         item.status = DownloadState.FINISHED;
-
-        item.result = result.url;
+        item.url = result.data.url;
         dispatch({ type: Actions.UPDATE_ITEM, payload: item });
       })
       .catch(err => {
-        console.log("Conversion failed", err)
-        console.log("Conversion respons", err.response)
-        console.log("Conversion code", err.code)
-        console.log("Conversion request", err.request)
-
-
-
         item.status = DownloadState.ERROR;
         item.error = err;
         dispatch({ type: Actions.UPDATE_ITEM, payload: item });
       });
-
   };
 };

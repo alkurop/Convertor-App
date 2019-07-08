@@ -8,7 +8,7 @@ const SelectionComponent = ({ item, sendFlacFile, state }) => {
     event.preventDefault();
     if (file) {
       item.fileName = file.name;
-      sendFlacFile(item);
+       sendFlacFile(item, file);
     }
   };
   const onChange = event => {
@@ -37,8 +37,8 @@ export default connect(
     state: state
   }),
   dispatch => ({
-    sendFlacFile: item => {
-      dispatch(  sendFileAsync(item));
+    sendFlacFile: (item, file) => {
+      dispatch(  sendFileAsync(item, file));
     }
   })
 )(SelectionComponent);

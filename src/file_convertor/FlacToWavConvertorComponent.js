@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import "./Convertor.css";
 
 const FlacToWavConvertorComponent = props => {
-  console.log("state", props.state);
-
   return (
     <div className="Convertor">
       {props.state.items.map((item, index) => {
