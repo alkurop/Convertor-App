@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { sendFileAsync } from "./Actions";
+import { sendFileAsync } from "../Actions";
 
 const SelectionComponent = ({ item, sendFlacFile, state }) => {
   var file;
