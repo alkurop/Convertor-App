@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const FinishedComponent = ({ item }) => {
   console.log("item", item);
   return (
