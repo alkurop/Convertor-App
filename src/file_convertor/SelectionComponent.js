@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Actions, DownloadState } from "../DownloadItem";
+import { Actions, DownloadState } from "./DownloadItem";
 
 const SelectionComponent = ({ item, sendFlacFile, state }) => {
   var file;

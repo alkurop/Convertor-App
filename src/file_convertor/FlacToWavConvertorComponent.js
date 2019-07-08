@@ -3,7 +3,7 @@ import FinishedComponent from "./FinishedComponent";
 import LoadingComponent from "./LoadingComponent";
 import SelectionComponent from "./SelectionComponent";
 import ErrorComponent from "./ErrorComponent";
-import { DownloadState } from "../DownloadItem";
+import { DownloadState } from "./DownloadItem";
 import { connect } from "react-redux";
 import "./Convertor.css";
 
@@ -12,7 +12,7 @@ const FlacToWavConvertorComponent = props => {
 
   return (
     <div className="Convertor">
-      {props.state.map((item, index) => {
+      {props.state.items.map((item, index) => {
         if (item.status === DownloadState.LOADING) {
           return <LoadingComponent key={index} item={item} />;
         } else if (item.status === DownloadState.FINISHED) {
