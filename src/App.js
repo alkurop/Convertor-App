@@ -5,9 +5,15 @@ import FlacToWavConvertorComponent from "./file_convertor/FlacToWavConvertorComp
 
 function App() {
   return (
-    <div className="App">
-      <h1>Convert Flac to Wav</h1>
-      <FlacToWavConvertorComponent />
+    <div>
+      <div className="App">
+        <img className="Logo" src="/flac.png" alt="Flac logo" />
+        <h1>Convert Flac to Wav</h1>
+        <FlacToWavConvertorComponent />
+        <a className="email" href="mailto:alkurop@gmail.com">
+          alkurop@gmail.com
+        </a>
+      </div>
     </div>
   );
 }

@@ -1,14 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { sendFileAsync } from "../Actions";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 const SelectionComponent = ({ item, sendFlacFile, state }) => {
   var file;
   const onFormSubmit = event => {
+    console.log("submit");
     event.preventDefault();
     if (file) {
       item.fileName = file.name;
-       sendFlacFile(item, file);
+      sendFlacFile(item, file);
     }
   };
   const onChange = event => {
@@ -17,17 +19,17 @@ const SelectionComponent = ({ item, sendFlacFile, state }) => {
 
   return (
     <div>
-      <form onSubmit={onFormSubmit}>
-        <input
-          style={{ margin: 10 }}
+      <FormGroup onSubmit={onFormSubmit}>
+        <Input
+          style={{ margin: 20 }}
           type="file"
           accept="audio/flac"
           onChange={onChange}
         />
-        <button style={{ margin: 10 }} type="submit">
+        <Button className="ui_item" onClick={onFormSubmit}>
           Convert
-        </button>
-      </form>
+        </Button>
+      </FormGroup>
     </div>
   );
 };
@@ -38,7 +40,7 @@ export default connect(
   }),
   dispatch => ({
     sendFlacFile: (item, file) => {
-      dispatch(  sendFileAsync(item, file));
+      dispatch(sendFileAsync(item, file));
     }
   })
 )(SelectionComponent);

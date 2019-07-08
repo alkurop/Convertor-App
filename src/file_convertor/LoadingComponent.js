@@ -3,9 +3,12 @@ import { Spinner } from "reactstrap";
 
 const LoadingComponent = ({ item }) => {
   return (
-    <div>
-      <p>Processing ...</p>
-      <Spinner color="primary" style={{ width: "5rem", height: "5rem" }} />
+    <div className="Container">
+      <p className="ui_item">Processing ...</p>
+      <Spinner
+        color="black"
+        style={{ width: "5rem", height: "5rem", margin: 10 }}
+      />
     </div>
   );
 };

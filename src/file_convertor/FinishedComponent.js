@@ -1,17 +1,17 @@
 import React from "react";
-
+import { Button } from "reactstrap";
 
 const FinishedComponent = ({ item }) => {
-  console.log("item", item);
+  const fn = item.fileName.replace("wav", "flac");
   return (
-    <div>
-      <div> Finished converting {item.fileName}</div>
-      <a href={item.url} target="_blank" rel="noopener noreferrer">
+    <div className="Container">
+      <h5 className="ui_item">Finished : {item.fileName}</h5>
+      <h5><a href={item.url} download={fn}>
         Download
       </a>
+      </h5>
     </div>
   );
 };
 
 export default FinishedComponent;
- 
