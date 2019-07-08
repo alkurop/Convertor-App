@@ -1,5 +1,5 @@
-import { Actions, DownloadState } from "./DownloadItem";
-import { uploadFlacFileForConversion } from "./ApiActions";
+import { Actions, DownloadState } from "./file_convertor/DownloadItem";
+import { uploadFlacFileForConversion } from "./file_convertor/ApiActions";
 export const sendFileAsync = (item, file) => {
   item.status = DownloadState.LOADING;
   return dispatch => {
