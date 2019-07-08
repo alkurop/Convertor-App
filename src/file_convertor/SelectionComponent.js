@@ -7,7 +7,7 @@ const SelectionComponent = ({ item, sendFlacFile, state }) => {
   const onFormSubmit = event => {
     event.preventDefault();
     if (file) {
-      item.file = file;
+      item.fileName = file.name;
       sendFlacFile(item);
     }
   };
