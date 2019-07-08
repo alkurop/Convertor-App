@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Actions, DownloadState } from "./DownloadItem";
+import { sendFileAsync } from "./Actions";
 
 const SelectionComponent = ({ item, sendFlacFile, state }) => {
   var file;
@@ -38,17 +38,7 @@ export default connect(
   }),
   dispatch => ({
     sendFlacFile: item => {
-      item.status = DownloadState.LOADING;
-      dispatch({ type: Actions.UPDATE_ITEM, payload: item });
-      const sendFileAsync = () => {
-        return dispatch => {
-          setTimeout(() => {
-            item.status = DownloadState.FINISHED;
-            dispatch({ type: Actions.UPDATE_ITEM, payload: item });
-          }, 2000);
-        };
-      };
-      dispatch(sendFileAsync());
+      dispatch(  sendFileAsync(item));
     }
   })
 )(SelectionComponent);
