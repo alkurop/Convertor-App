@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { sendFileAsync } from "../Actions";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, FormGroup, Input } from "reactstrap";
 
 const SelectionComponent = ({ item, sendFlacFile, state }) => {
   var file;
