@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 
 import FlacToWavConvertorComponent from "./file_convertor/FlacToWavConvertorComponent";
-import FinishedComponent from "./file_convertor/FinishedComponent";
 
 function App() {
   return (
