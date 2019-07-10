@@ -7,24 +7,6 @@ a:visited,
 a:hover {
   color: black;
 }
-@font-face {
-  font-family: "NeoFont"; /*a name to be used later*/
-  src: url("/fonts/benggcbi.ttf"); /*URL to font*/
-}
-.Title {
-  font-family: "NeoFont";
-  font-size: calc(10px + 2vmin);
-  padding: 20px;
-  border-radius: 25px;
-  border: 1px solid black;
-  background-color: white;
-}
-
-.Title:hover {
-  background-color: blue;
-  color: white;
-  border: 0px;
-}
 
 .App {
   display: -webkit-flex; /* Safari */
@@ -44,10 +26,13 @@ a:hover {
 code {
   font-family: "NeoFont";
 }
-.email {
+.other {
   position: absolute;
   bottom: 10px;
 }
+.stuff {
+  margin-top:  10px;
+ }
 .Container {
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
@@ -70,4 +55,3 @@ code {
 .ui_item {
   margin: 10;
 }
- 
