@@ -7,15 +7,22 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import isDebug from "./isDebug";
 
 import "./index.css";
 import App from "./App";
 import CombinedReducer from "./CombinedReducer";
 
-const store = createStore(
-  CombinedReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+console.log("isDebug", isDebug())
+
+let thunkReducer;
+if (isDebug()) {
+  thunkReducer = composeWithDevTools(applyMiddleware(thunk));
+} else {
+  thunkReducer = applyMiddleware(thunk);
+}
+const store = createStore(CombinedReducer, thunkReducer);
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -23,4 +30,8 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-serviceWorker.unregister();
+if (isDebug()) {
+  serviceWorker.unregister();
+} else {
+  serviceWorker.register();
+}
