@@ -4,6 +4,7 @@ export const sendFileAsync = (item, file) => {
   item.status = DownloadState.LOADING;
   return dispatch => {
     dispatch({ type: Actions.UPDATE_ITEM, payload: item });
+    dispatch({ type: Actions.ADD_ITEM });
 
     uploadFlacFileForConversion(file)
       .then(result => {
