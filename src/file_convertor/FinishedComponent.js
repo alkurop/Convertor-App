@@ -1,15 +1,24 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { Badge } from "reactstrap";
 
 const FinishedComponent = ({ item }) => {
-  const fn = item.fileName.replace("wav", "flac");
   return (
-    <div className="Container">
-      <h5 className="ui_item">Finished : {item.fileName}</h5>
-      <h5><a href={item.url} download target="_blank" rel="noopener noreferrer">
-        Download
-      </a>
-      </h5>
+    <div
+      className="Container"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
+      }}
+    >
+      <div className="ui_item">
+        <Badge color="success">Finished:</Badge>  {item.fileName}
+      </div>
+      <div>
+        <a href={item.url} download target="_blank" rel="noopener noreferrer">
+          Download
+        </a>
+      </div>
     </div>
   );
 };

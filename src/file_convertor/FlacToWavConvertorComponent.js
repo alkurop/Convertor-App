@@ -23,6 +23,8 @@ const FlacToWavConvertorComponent = props => {
             <div>
               <SelectionComponent key={index} item={item} />
               <LoadingComponent key={index} item={testItem} />
+              <FinishedComponent key={index} item={testItem} />
+              <ErrorComponent key={index} item={testItem} />
             </div>
           );
         } else if (item.status === DownloadState.ERROR) {

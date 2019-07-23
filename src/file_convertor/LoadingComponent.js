@@ -1,19 +1,31 @@
 import React from "react";
-import { Spinner } from "reactstrap";
+import { Spinner, Badge } from "reactstrap";
 
 const containerStyle = {
-  display: "flex",
+  display: "flex"
 };
 
 const LoadingComponent = ({ item }) => {
   return (
-    <div className="Container">
-      <div style={containerStyle}>
-        <Spinner color="black" style={{ width: "2rem", height: "2rem" }} />
-        <div style={{marginTop:"4px", marginLeft:"15px"}}>Processing ...</div>
+    <div
+      className="Container"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
+      }}
+    >
+      <div className="ui_item">
+        <Badge color="warning">Processing:</Badge> {item.fileName}
       </div>
-
-      <div style={{ ...containerStyle, marginTop:"20px" }}>{item.fileName}</div>
+      <div
+        className="ui_item"
+        style={{
+          margin: "auto"
+        }}
+      >
+        <Spinner color="black" />
+      </div>
     </div>
   );
 };
