@@ -18,15 +18,14 @@ const SelectionComponent = ({ item, sendFlacFile, state }) => {
   };
 
   return (
-    <div>
+    <div className="Container">
       <FormGroup onSubmit={onFormSubmit}>
-        <Input
-          style={{ margin: 20 }}
-          type="file"
-          accept="audio/flac"
-          onChange={onChange}
-        />
-        <Button className="ui_item" onClick={onFormSubmit}>
+        <Input type="file" accept="audio/flac" onChange={onChange} />
+        <Button
+          color="primary"
+          onClick={onFormSubmit}
+          style={{ marginTop: "10px" }}
+        >
           Convert
         </Button>
       </FormGroup>

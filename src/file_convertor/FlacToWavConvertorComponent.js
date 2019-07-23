@@ -5,7 +5,6 @@ import SelectionComponent from "./SubmitComponent";
 import ErrorComponent from "./ErrorComponent";
 import { DownloadState } from "./DownloadItem";
 import { connect } from "react-redux";
-import "./Convertor.css";
 
 const FlacToWavConvertorComponent = props => {
   const testItem = {
@@ -13,22 +12,26 @@ const FlacToWavConvertorComponent = props => {
     fileName: "testFilename"
   };
   return (
-    <div className="Container">
+    <div>
       {props.state.items.map((item, index) => {
         if (item.status === DownloadState.LOADING) {
           return <LoadingComponent key={index} item={item} />;
         } else if (item.status === DownloadState.FINISHED) {
           return <FinishedComponent key={index} item={item} />;
         } else if (item.status === DownloadState.SELECTION) {
-          return <SelectionComponent key={index} item={item} />;
+          return (
+            <div>
+              <SelectionComponent key={index} item={item} />
+              <LoadingComponent key={index} item={testItem} />
+            </div>
+          );
         } else if (item.status === DownloadState.ERROR) {
           return (
             <div key={index}>
               <ErrorComponent item={item} />
-              <SelectionComponent key={index} item={item} />
             </div>
           );
-        } else return <div>privet</div>;
+        } else return <div>wtf</div>;
       })}
     </div>
   );
