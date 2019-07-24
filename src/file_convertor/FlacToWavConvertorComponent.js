@@ -5,39 +5,31 @@ import SelectionComponent from "./SelectionComponent";
 import ErrorComponent from "./ErrorComponent";
 import { DownloadState } from "./DownloadItem";
 import { connect } from "react-redux";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import "./ItemsAnimation.css"
 
 const FlacToWavConvertorComponent = props => {
-  const testItem = {
-    url: "testurl",
-    fileName: "testFilename"
-  };
   const size = 5;
+  const map = props.state.items.slice(0, size).map((item, index) => {
+    if (item.status === DownloadState.LOADING) {
+      return <LoadingComponent key={item.id} item={item} />;
+    } else if (item.status === DownloadState.FINISHED) {
+      return <FinishedComponent key={item.id} item={item} />;
+    } else if (item.status === DownloadState.SELECTION) {
+      return <SelectionComponent key={item.id} item={item} />;
+    } else if (item.status === DownloadState.ERROR) {
+      return <ErrorComponent key={item.id} item={item} />;
+    } else return <div>wtf</div>;
+  });
+
   return (
-    <div>
-      {props.state.items.slice(0, size).map((item, index) => {
-        if (item.status === DownloadState.LOADING) {
-          return <LoadingComponent key={index} item={item} />;
-        } else if (item.status === DownloadState.FINISHED) {
-          return <FinishedComponent key={index} item={item} />;
-        } else if (item.status === DownloadState.SELECTION) {
-          return (
-            <SelectionComponent key={index} item={item} />
-            /* <div>
-              <SelectionComponent key={index} item={item} />
-              <LoadingComponent key={index} item={testItem} />
-              <FinishedComponent key={index} item={testItem} />
-              <ErrorComponent key={index} item={testItem} />
-            </div> */
-          );
-        } else if (item.status === DownloadState.ERROR) {
-          return (
-            <div key={index}>
-              <ErrorComponent item={item} />
-            </div>
-          );
-        } else return <div>wtf</div>;
-      })}
-    </div>
+    <ReactCSSTransitionGroup
+      transitionName="items_animation"
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={500}
+    >
+      {map}
+    </ReactCSSTransitionGroup>
   );
 };
 
