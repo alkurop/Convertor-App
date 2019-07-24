@@ -1,15 +1,11 @@
 import React from "react";
 import { Badge } from "reactstrap";
+import Close from "../Close";
 
 const ErrorComponent = ({ item }) => {
   var msg = "Something went wrong";
-  if (
-    item.error &&
-    item.error.response &&
-    item.error.response.data &&
-    item.error.response.message
-  ) {
-    msg = item.error.response.data.message;
+  if (item.error) {
+    msg = item.error;
   }
   return (
     <div
@@ -20,10 +16,21 @@ const ErrorComponent = ({ item }) => {
         justifyContent: "space-between"
       }}
     >
-      <div className="ui_item">
-        <Badge color="danger">Error:</Badge> {item.fileName}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between"
+        }}
+      >
+        <div
+          className="ui_item"
+          style={{ paddingLeft: "10px", paddingTop: "10px" }}
+        >
+          <Badge color="danger">Error:</Badge> {item.fileName}
+        </div>
+        <Close />
       </div>
-      <div className="ui_item">{msg}</div>
+      <div className="ui_item padding">{msg}</div>
     </div>
   );
 };

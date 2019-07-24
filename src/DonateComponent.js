@@ -3,6 +3,7 @@ import React from "react";
 const DonateComponent = props => {
   return (
     <form
+      style={{ marginTop: "60px" }}
       action="https://www.paypal.com/cgi-bin/webscr"
       method="post"
       target="_top"

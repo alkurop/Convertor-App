@@ -1,11 +1,10 @@
 import React from "react";
 import { Spinner, Badge } from "reactstrap";
-
-const containerStyle = {
-  display: "flex"
-};
+import Close from "../Close";
 
 const LoadingComponent = ({ item }) => {
+  const close = () => {};
+
   return (
     <div
       className="Container"
@@ -15,8 +14,19 @@ const LoadingComponent = ({ item }) => {
         justifyContent: "space-between"
       }}
     >
-      <div className="ui_item">
-        <Badge color="warning">Processing:</Badge> {item.fileName}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between"
+        }}
+      >
+        <div
+          className="ui_item"
+          style={{ paddingLeft: "10px", paddingTop: "10px" }}
+        >
+          <Badge color="warning">Processing:</Badge> {item.fileName}
+        </div>
+        <Close onClose={close} />
       </div>
       <div
         className="ui_item"
@@ -24,7 +34,7 @@ const LoadingComponent = ({ item }) => {
           margin: "auto"
         }}
       >
-        <Spinner color="black" />
+        <Spinner className="padding" color="black" />
       </div>
     </div>
   );

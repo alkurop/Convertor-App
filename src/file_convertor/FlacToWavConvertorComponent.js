@@ -1,7 +1,7 @@
 import React from "react";
 import FinishedComponent from "./FinishedComponent";
 import LoadingComponent from "./LoadingComponent";
-import SelectionComponent from "./SubmitComponent";
+import SelectionComponent from "./SelectionComponent";
 import ErrorComponent from "./ErrorComponent";
 import { DownloadState } from "./DownloadItem";
 import { connect } from "react-redux";
