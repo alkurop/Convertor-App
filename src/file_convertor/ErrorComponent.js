@@ -21,7 +21,7 @@ const ErrorComponent = ({ item, cancel }) => {
   };
   var msg = "Something went wrong";
   if (item.error) {
-    msg = item.error;
+    msg = item.error.message;
   }
   return (
     <div className="Container" style={containerStyle}>

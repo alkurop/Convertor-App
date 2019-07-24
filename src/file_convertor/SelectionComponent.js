@@ -82,7 +82,7 @@ export default connect(
     },
     onFileError: (item, err) => {
       item.status = DownloadState.ERROR;
-      console.log(err)
+      item.error = err;
       dispatch({ type: Actions.UPDATE_ITEM, payload: item });
     }
   })
