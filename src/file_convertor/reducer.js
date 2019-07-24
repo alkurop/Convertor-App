@@ -13,6 +13,8 @@ export default function manageItems(state = initialState, action) {
     return Array.from(state);
   }
   if (action.type === Actions.REMOVE_ITEM)
-    return _.without(state, { id: action.payload.id });
+    return _.filter(state, item => {
+      return item.id !== action.payload.id;
+    });
   return state;
 }

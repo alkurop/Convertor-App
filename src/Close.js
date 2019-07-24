@@ -3,7 +3,6 @@ import "./Close.css";
 
 const Close = ({ onClose }) => {
   const close = () => {
-    console.log("closing");
     onClose();
   };
   return (

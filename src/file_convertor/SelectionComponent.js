@@ -13,28 +13,28 @@ const SelectionComponent = ({
   var file;
 
   function sendFile(item, file) {
-    const cancelable = {
-      isCanceled: false,
+    var isCanceled = false;
+    const promise = {
       cancel: () => {
-        this.isCanceled = true;
+        isCanceled = true;
       }
     };
-    
+
     onItemLoading(item);
     uploadFlacFileForConversion(file)
       .then(result => {
         console.log("result", result);
-        if (!cancelable.isCanceled) {
+        if (!isCanceled) {
           onFileSuccess(item, result);
         }
       })
       .catch(err => {
-        if (!cancelable.isCanceled) {
+        if (!isCanceled) {
           onFileError(item, err);
         }
       });
 
-    return cancelable;
+    return promise;
   }
 
   const onFormSubmit = event => {
@@ -42,7 +42,7 @@ const SelectionComponent = ({
     event.preventDefault();
     if (file) {
       item.fileName = file.name;
-      item.cancelable = sendFile(item, file);
+      item.promise = sendFile(item, file);
     }
   };
   const onChange = event => {
@@ -82,7 +82,7 @@ export default connect(
     },
     onFileError: (item, err) => {
       item.status = DownloadState.ERROR;
-      item.error = err;
+      console.log(err)
       dispatch({ type: Actions.UPDATE_ITEM, payload: item });
     }
   })
